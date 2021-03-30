@@ -1,21 +1,21 @@
 package com.lucas.rn.solid.service;
 
-import com.lucas.rn.solid.ValidacaoException;
 import com.lucas.rn.solid.model.Funcionario;
+import lombok.AllArgsConstructor;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
+import java.util.Set;
 
-public class ReajusteService {
+@AllArgsConstructor
+public class ReajusteService implements ValidacaoReajuste {
 
-    public void reajustarSalario(Funcionario funcionario, BigDecimal aumento) {
-        BigDecimal salarioAtual = funcionario.getSalario();
+    private Set<ValidacaoReajuste> validacoes;
 
-        BigDecimal percentualReajuste = aumento.divide(salarioAtual, RoundingMode.HALF_UP);
-        if (percentualReajuste.compareTo(new BigDecimal("0.4")) > 0) {
-            throw new ValidacaoException("Reajuste não pode ser superior a 40% do salário!");
-        }
-        BigDecimal salarioAjustado = salarioAtual.add(aumento);
+    @Override
+    public void validar(Funcionario funcionario, BigDecimal aumento) {
+        validacoes.forEach(validacao -> validacao.validar(funcionario, aumento));
+
+        BigDecimal salarioAjustado = funcionario.getSalario().add(aumento);
         funcionario.atualizarSalario(salarioAjustado);
     }
 

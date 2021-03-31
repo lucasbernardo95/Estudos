@@ -1,4 +1,4 @@
-package com.lucas.rn.solid.model;
+package com.lucas.solid.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

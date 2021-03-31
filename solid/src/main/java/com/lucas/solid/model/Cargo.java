@@ -1,4 +1,4 @@
-package com.lucas.rn.solid.model;
+package com.lucas.solid.model;
 
 public enum Cargo {
 

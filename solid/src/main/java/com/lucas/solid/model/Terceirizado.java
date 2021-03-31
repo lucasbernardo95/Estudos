@@ -1,4 +1,4 @@
-package com.lucas.rn.solid.model;
+package com.lucas.solid.model;
 
 import lombok.Builder;
 import lombok.Data;

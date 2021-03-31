@@ -1,7 +1,7 @@
-package com.lucas.rn.solid.service.reajuste;
+package com.lucas.solid.service.reajuste;
 
-import com.lucas.rn.solid.ValidacaoException;
-import com.lucas.rn.solid.model.Funcionario;
+import com.lucas.solid.ValidacaoException;
+import com.lucas.solid.model.Funcionario;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

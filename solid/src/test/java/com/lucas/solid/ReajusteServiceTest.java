@@ -1,12 +1,12 @@
-package com.lucas.rn.solid;
+package com.lucas.solid;
 
-import com.lucas.rn.solid.model.Cargo;
-import com.lucas.rn.solid.model.DadoPessoal;
-import com.lucas.rn.solid.model.Funcionario;
-import com.lucas.rn.solid.service.reajuste.ReajusteService;
-import com.lucas.rn.solid.service.reajuste.ValidacaoPercentualReajuste;
-import com.lucas.rn.solid.service.reajuste.ValidacaoPeriodicidadeEntreReajuste;
-import com.lucas.rn.solid.service.reajuste.ValidacaoReajuste;
+import com.lucas.solid.model.Cargo;
+import com.lucas.solid.model.DadoPessoal;
+import com.lucas.solid.model.Funcionario;
+import com.lucas.solid.service.reajuste.ReajusteService;
+import com.lucas.solid.service.reajuste.ValidacaoPercentualReajuste;
+import com.lucas.solid.service.reajuste.ValidacaoPeriodicidadeEntreReajuste;
+import com.lucas.solid.service.reajuste.ValidacaoReajuste;
 import org.junit.Before;
 import org.junit.Test;
 

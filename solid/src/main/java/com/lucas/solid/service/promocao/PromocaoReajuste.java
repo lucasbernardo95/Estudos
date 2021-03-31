@@ -1,8 +1,8 @@
-package com.lucas.rn.solid.service.promocao;
+package com.lucas.solid.service.promocao;
 
-import com.lucas.rn.solid.ValidacaoException;
-import com.lucas.rn.solid.model.Cargo;
-import com.lucas.rn.solid.model.Funcionario;
+import com.lucas.solid.ValidacaoException;
+import com.lucas.solid.model.Cargo;
+import com.lucas.solid.model.Funcionario;
 
 public class PromocaoReajuste {
 

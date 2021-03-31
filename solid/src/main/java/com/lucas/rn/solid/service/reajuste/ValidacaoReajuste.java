@@ -1,4 +1,4 @@
-package com.lucas.rn.solid.service;
+package com.lucas.rn.solid.service.reajuste;
 
 import com.lucas.rn.solid.model.Funcionario;
 

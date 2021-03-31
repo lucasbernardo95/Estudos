@@ -1,6 +1,7 @@
 package com.lucas.rn.solid;
 
 import com.lucas.rn.solid.model.Cargo;
+import com.lucas.rn.solid.model.DadoPessoal;
 import com.lucas.rn.solid.model.Funcionario;
 import com.lucas.rn.solid.service.reajuste.ReajusteService;
 import com.lucas.rn.solid.service.reajuste.ValidacaoPercentualReajuste;
@@ -37,29 +38,29 @@ public class ReajusteServiceTest {
         Funcionario funcionario = givenFuncionario();
         funcionario.setDataUltimoReajuste(null);
 
-        var aumento = givenAumento(funcionario.getSalario(), "0.1");
+        var aumento = givenAumento(funcionario.getDadoPessoal().getSalario(), "0.1");
 
         reajusteService.validar(funcionario, aumento);
 
-        assertEquals(new BigDecimal("6270.000"), funcionario.getSalario());
+        assertEquals(new BigDecimal("6270.000"), funcionario.getDadoPessoal().getSalario());
         assertEquals(LocalDate.now(), funcionario.getDataUltimoReajuste());
     }
 
     @Test
     public void testAumento() {
         var funcionario = givenFuncionario();
-        var aumento = givenAumento(funcionario.getSalario(), "0.1");
+        var aumento = givenAumento(funcionario.getDadoPessoal().getSalario(), "0.1");
 
         reajusteService.validar(funcionario, aumento);
 
-        assertEquals(new BigDecimal("6270.000"), funcionario.getSalario());
+        assertEquals(new BigDecimal("6270.000"), funcionario.getDadoPessoal().getSalario());
         assertEquals(LocalDate.now(), funcionario.getDataUltimoReajuste());
     }
 
     @Test
     public void testAumentoMaiorQue40() {
         var funcionario = givenFuncionario();
-        var aumento = givenAumento(funcionario.getSalario(), "0.5");
+        var aumento = givenAumento(funcionario.getDadoPessoal().getSalario(), "0.5");
 
         var erro = "";
         try {
@@ -75,7 +76,7 @@ public class ReajusteServiceTest {
         var funcionario = givenFuncionario();
         funcionario.setDataUltimoReajuste(LocalDate.now());
 
-        var aumento = givenAumento(funcionario.getSalario(), "0.1");
+        var aumento = givenAumento(funcionario.getDadoPessoal().getSalario(), "0.1");
 
         var erro = "";
         try {
@@ -86,11 +87,17 @@ public class ReajusteServiceTest {
         assertEquals(erro, "Intervalo para reajuste deve ser de 6 meses.");
     }
 
-    public Funcionario givenFuncionario() {
+    private Funcionario givenFuncionario() {
         return Funcionario.builder()
+                .dadoPessoal(givenDadoPessoal())
+                .dataUltimoReajuste(LocalDate.of(2020, 3, 30))
+                .build();
+    }
+
+    private DadoPessoal givenDadoPessoal(){
+        return DadoPessoal.builder()
                 .nome("Funcionário Feliz")
                 .cpf("12345678901")
-                .dataUltimoReajuste(LocalDate.of(2020, 3, 30))
                 .cargo(Cargo.ESPECIALISTA)
                 .salario(new BigDecimal("5700.00"))
                 .build();

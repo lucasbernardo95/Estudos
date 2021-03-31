@@ -1,5 +1,6 @@
 package com.lucas.rn.solid.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
@@ -8,21 +9,19 @@ import java.time.LocalDate;
 
 @Data
 @Builder
+@AllArgsConstructor
 public class Funcionario {
 
-    private String nome;
-    private String cpf;
-    private Cargo cargo;
-    private BigDecimal salario;
+    private DadoPessoal dadoPessoal;
     private LocalDate dataUltimoReajuste;
 
     public void atualizarSalario(BigDecimal salarioAjustado) {
-        this.salario = salarioAjustado;
+        this.dadoPessoal.setSalario(salarioAjustado);
         this.dataUltimoReajuste = LocalDate.now();
     }
 
     public void promover(Cargo novoCargo) {
-        this.cargo = novoCargo;
+        this.dadoPessoal.setCargo(novoCargo);
     }
 
 }

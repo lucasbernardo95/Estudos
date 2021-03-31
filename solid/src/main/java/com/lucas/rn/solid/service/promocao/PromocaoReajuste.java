@@ -7,7 +7,7 @@ import com.lucas.rn.solid.model.Funcionario;
 public class PromocaoReajuste {
 
     public void promover(Funcionario funcionario, boolean metaAtingida) {
-        Cargo cargoAtual = funcionario.getCargo();
+        Cargo cargoAtual = funcionario.getDadoPessoal().getCargo();;
 
         if (Cargo.GERENTE == cargoAtual)
             throw new ValidacaoException("Gerentes não podem ser promovidos!");

@@ -1,6 +1,6 @@
-package com.lucas.rn.solid.service;
+package com.lucas.solid.service.reajuste;
 
-import com.lucas.rn.solid.model.Funcionario;
+import com.lucas.solid.model.Funcionario;
 import lombok.AllArgsConstructor;
 
 import java.math.BigDecimal;
@@ -15,7 +15,7 @@ public class ReajusteService implements ValidacaoReajuste {
     public void validar(Funcionario funcionario, BigDecimal aumento) {
         validacoes.forEach(validacao -> validacao.validar(funcionario, aumento));
 
-        BigDecimal salarioAjustado = funcionario.getSalario().add(aumento);
+        BigDecimal salarioAjustado = funcionario.getDadoPessoal().getSalario().add(aumento);
         funcionario.atualizarSalario(salarioAjustado);
     }
 

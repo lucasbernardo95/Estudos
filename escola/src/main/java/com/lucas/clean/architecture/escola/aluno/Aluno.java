@@ -1,7 +1,6 @@
-package com.lucas.escola;
+package com.lucas.clean.architecture.escola.aluno;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

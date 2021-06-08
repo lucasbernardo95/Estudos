@@ -1,4 +1,4 @@
-package com.lucas.escola;
+package com.lucas.clean.architecture.escola;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

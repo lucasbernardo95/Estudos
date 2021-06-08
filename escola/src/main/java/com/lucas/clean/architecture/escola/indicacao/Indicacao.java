@@ -1,5 +1,6 @@
-package com.lucas.escola;
+package com.lucas.clean.architecture.escola.indicacao;
 
+import com.lucas.clean.architecture.escola.aluno.Aluno;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

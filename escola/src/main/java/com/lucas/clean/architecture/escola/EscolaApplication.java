@@ -1,4 +1,4 @@
-package com.lucas.escola;
+package com.lucas.clean.architecture.escola;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

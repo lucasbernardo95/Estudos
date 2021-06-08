@@ -1,4 +1,4 @@
-package com.lucas.escola;
+package com.lucas.clean.architecture.escola.aluno;
 
 import lombok.Data;
 

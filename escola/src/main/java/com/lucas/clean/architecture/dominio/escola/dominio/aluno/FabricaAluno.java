@@ -1,4 +1,4 @@
-package com.lucas.clean.architecture.escola.aluno;
+package com.lucas.clean.architecture.dominio.escola.dominio.aluno;
 
 import lombok.Getter;
 

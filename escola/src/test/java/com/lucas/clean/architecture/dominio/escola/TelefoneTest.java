@@ -1,6 +1,6 @@
-package com.lucas.clean.architecture.escola;
+package com.lucas.clean.architecture.dominio.escola;
 
-import com.lucas.clean.architecture.escola.aluno.Telefone;
+import com.lucas.clean.architecture.dominio.escola.dominio.aluno.Telefone;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

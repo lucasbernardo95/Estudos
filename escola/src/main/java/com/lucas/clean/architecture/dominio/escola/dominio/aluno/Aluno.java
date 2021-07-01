@@ -15,6 +15,7 @@ public class Aluno {
     private String nome;
     private Email email;
     private CPF cpf;
+    private String senha;
 
     public Aluno(CPF cpf, String nome, Email email) {
         this.cpf = cpf;

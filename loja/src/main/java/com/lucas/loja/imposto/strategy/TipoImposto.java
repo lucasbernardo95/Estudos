@@ -1,4 +1,4 @@
-package com.lucas.loja.imposto;
+package com.lucas.loja.imposto.strategy;
 
 import com.lucas.loja.orcamento.Orcamento;
 

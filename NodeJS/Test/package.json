@@ -1,0 +1,20 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "Primeiro teste nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test":"mocha"
+  },
+  "keywords": [
+    "test",
+    "npm",
+    "init"
+  ],
+  "author": "lucasbernardo95",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1048.0",
+    "mysql": "^2.18.1"
+  }
+}

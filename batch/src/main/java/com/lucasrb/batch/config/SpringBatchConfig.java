@@ -31,6 +31,42 @@ public class SpringBatchConfig {
     private CustomerRepository repository;
 
     @Bean
+    public Job runJob(){
+        return jobBuilderFactory.get("importCustomers")
+                .flow(step1()).end().build();
+        //.next(step1())
+    }
+
+    @Bean
+    public Step step1(){
+        return stepBuilderFactory.get("csv-step")
+                .<Customer, Customer>chunk(250)
+                .reader(reader())
+                .processor(processor())
+                .writer(writer())
+//                .taskExecutor(taskExecutor())
+                .taskExecutor(taskExecutorThread())
+                .build();
+    }
+//
+//    @Bean
+//    public TaskExecutor taskExecutor(){
+//        var asyncTaskExecutor = new SimpleAsyncTaskExecutor();
+//        asyncTaskExecutor.setConcurrencyLimit(5);
+//        return asyncTaskExecutor;
+//    }
+
+    @Bean
+    public TaskExecutor taskExecutorThread(){
+        var executor = new ThreadPoolTaskExecutor();
+        executor.setCorePoolSize(5);
+        executor.setMaxPoolSize(5);
+        executor.setQueueCapacity(250);
+        executor.setThreadNamePrefix("Thread N:" );
+        return executor;
+    }
+
+    @Bean
     public FlatFileItemReader<Customer> reader(){
         var itemReader = new FlatFileItemReader<Customer>();
         itemReader.setResource(new FileSystemResource("src/main/resources/customers.csv"));
@@ -69,41 +105,5 @@ public class SpringBatchConfig {
         writer.setMethodName("save");
 
         return writer;
-    }
-
-    @Bean
-    public Step step1(){
-        return stepBuilderFactory.get("csv-step")
-                .<Customer, Customer>chunk(250)
-                .reader(reader())
-                .processor(processor())
-                .writer(writer())
-//                .taskExecutor(taskExecutor())
-                .taskExecutor(taskExecutorThread())
-                .build();
-    }
-
-    @Bean
-    public Job runJob(){
-        return jobBuilderFactory.get("importCustomers")
-                .flow(step1()).end().build();
-                //.next(step1())
-    }
-//
-//    @Bean
-//    public TaskExecutor taskExecutor(){
-//        var asyncTaskExecutor = new SimpleAsyncTaskExecutor();
-//        asyncTaskExecutor.setConcurrencyLimit(5);
-//        return asyncTaskExecutor;
-//    }
-
-    @Bean
-    public TaskExecutor taskExecutorThread(){
-        var executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(5);
-        executor.setMaxPoolSize(5);
-        executor.setQueueCapacity(250);
-        executor.setThreadNamePrefix("Thread N:" );
-        return executor;
     }
 }

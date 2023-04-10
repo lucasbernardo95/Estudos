@@ -14,7 +14,7 @@
   "author": "lucasbernardo95",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.1048.0",
+    "aws-sdk": "^2.1354.0",
     "mysql": "^2.18.1"
   }
 }
